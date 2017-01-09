@@ -1,0 +1,67 @@
+//-------------Print_Matrix_in_Spiral_order--------
+#include<stdio.h>
+#include<conio.h>
+#define r 5
+#define c 5
+main()
+{
+	int a[r][c]={{1,1,1,1,1},{4,5,5,5,2},{4,8,9,6,2},{4,7,7,7,2},{3,3,3,3,3}};
+	int rs=0,re=r-1;
+	int cs=0,ce=c-1;
+	int i,j,flag=0;
+	for(int i=0;i<r;i++)
+	{
+		for(int j=0;j<c;j++)
+		{
+			printf("%d ",a[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n\n");
+	while(1)
+	{
+	    //printf("\n\nrs=%d re=%d cs=%d ce=%d\n\n",rs,re,cs,ce);
+		for(i=cs;i<=ce;i++)
+		{
+			printf("%d ",a[rs][i]);
+		}
+		for(i=rs+1;i<=re-1;i++)
+		{
+			printf("%d ",a[i][ce]);
+		}
+		for(i=ce;i>=cs;i--)
+		{
+			printf("%d ",a[re][i]);
+		}
+		for(i=re-1;i>=rs+1;i--)
+		{
+			printf("%d ",a[i][cs]);
+		}
+		rs++; re--; cs++; ce--;
+		if(rs==re)
+		{
+			for(i=cs;i<=ce;i++)
+			{
+				printf("%d ",a[rs][i]);
+			}
+			break;
+		}
+		if(cs==ce)
+		{
+			for(i=rs;i<=re;i++)
+			{
+				printf("%d ",a[cs][i]);
+			}
+			break;
+		} 
+		
+		if(rs>re-1 || cs>ce-1)
+		{
+			flag=1;
+		}
+	}
+	if(flag)
+	{
+		printf("%d %d %d %d ",a[rs][cs],a[rs][ce],a[re][ce],a[re][cs]);
+	}
+}
